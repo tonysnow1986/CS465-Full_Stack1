@@ -7,7 +7,7 @@ const hbs = require('hbs');
 
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
-const travelRouter = require('./app_server/routes/travel');
+const travelRouter = require('./app_server/routes/travel.js');
 
 
 var app = express();
