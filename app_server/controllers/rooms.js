@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const meals = (req, res) => {
+const rooms = (req, res) => {
     pageTitle = 'Travlr Getaways - Rooms';
     res.render('rooms', {title: pageTitle});
 };

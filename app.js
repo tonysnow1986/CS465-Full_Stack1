@@ -5,14 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('hbs');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var travelRouter = require('./routes/users');
-var aboutRouter = require('./routes/about');
-var roomsRouter = require('./routes/rooms');
-var contactRouter = require('./routes/contact');
-var mealsRouter = require('./routes/meals');
-var newsRouter = require('./routes/news');
+var indexRouter = require('./app_server/routes/index');
+var usersRouter = require('./app_server/routes/users');
+var travelRouter = require('./app_server/routes/users');
+var aboutRouter = require('./app_server/routes/about');
+var roomsRouter = require('./app_server/routes/rooms');
+var contactRouter = require('./app_server/routes/contact');
+var mealsRouter = require('./app_server/routes/meals');
+var newsRouter = require('./app_server/routes/news');
 
 var app = express();
 
