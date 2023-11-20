@@ -54,4 +54,4 @@ gracefulShutdown('Heroku app shutdown', () => {
 });
 
 //BRING IN THE MONGOOSE SCHEMA
-require('./models/travlr');
+require('./travlr');
