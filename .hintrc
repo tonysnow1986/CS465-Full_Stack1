@@ -23,6 +23,9 @@
       {
         "html-has-lang": "off"
       }
-    ]
+    ],
+    "no-inline-styles": "off",
+    "typescript-config/consistent-casing": "off",
+    "typescript-config/strict": "off"
   }
 }
