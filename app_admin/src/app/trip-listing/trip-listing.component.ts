@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // import { trips } from '../data/trips';
-import { TripDataService } from 'services/trip-data.service';
-import { Trip } from 'models/trip';
+import { TripDataService } from '../services/trip-data.service';
+import { Trip } from '../models/trip';
 
 @Component({
   selector: 'app-trip-listing',
@@ -16,7 +16,15 @@ export class TripListingComponent implements OnInit {
   message: string;
 
   // tslint:disable-next-line:no-shadowed-variable
-  constructor(private TripDataService: TripDataService) { }
+  constructor(
+    private TripDataService: TripDataService,
+    private router: Router
+    ) { }
+
+    private addTrip(): void {
+      console.log('Inside TripListingComponent#addTrips');
+      this.router.navigate(['add-trip']);
+    }
 
   private getTrips(): void {
     console.log('Inside TripListingComponent#getTrips');

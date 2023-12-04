@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Trip} from '../models/trip';
 
 @Component({
   selector: 'app-trip-card',
@@ -6,10 +8,26 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./trip-card.component.css']
 })
 export class TripCardComponent implements OnInit {
+  // tslint:disable-next-line:no-input-rename
+  @Input('trip') trip: Trip;
+  constructor(
+    private router: Router
+  ) { }
 
-  constructor() { }
-  @Input('trip') trip: any;
-  ngOnInit() {
+
+   ngOnInit() {
+  }
+
+  private editTrip(trip: Trip): void {
+    localStorage.removeItem('tripCode');
+    localStorage.setItem('tripCode', trip.code);
+    this.router.navigate(['edit-trip']);
+  }
+
+  private deleteTrip(trip: Trip): void {
+    localStorage.removeItem('tripCode');
+    localStorage.setItem('tripCode', trip.code);
+    this.router.navigate(['delete-trip']);
   }
 
 }
