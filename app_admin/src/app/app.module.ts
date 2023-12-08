@@ -11,6 +11,9 @@ import { TripDataService } from 'src/app/services/trip-data.service';
 import { AddTripComponent } from './add-trip/add-trip.component';
 import { HttpModule } from '@angular/http';
 import { EditTripComponent } from './edit-trip/edit-trip.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -20,6 +23,9 @@ import { EditTripComponent } from './edit-trip/edit-trip.component';
     TripCardComponent,
     AddTripComponent,
     EditTripComponent,
+    NavbarComponent,
+    LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

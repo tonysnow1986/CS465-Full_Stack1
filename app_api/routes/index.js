@@ -1,10 +1,23 @@
 const express = require('express');
 const router = express.Router();
+//const jwt = require('express-jwt');
+
+var {expressjwt: jwt} = require('express-jwt');
+
+const auth = jwt({secret: process.env.JWT_SECRET, userProperty: 'payload', algorithms: ["HS256"],});
 
 
 
+const authContoller = require('../controllers/authentication');
 const tripsController = require('../controllers/trips');
 
+router
+.route('/login')
+.post(authContoller.login);
+
+router
+.route('/register')
+.post(authContoller.register);
 
 router
     .route('/trips')
@@ -13,7 +26,7 @@ router
 
 router
     .route('/trips')
-    .post(tripsController.tripsAddTrip);
+    .post(auth, tripsController.tripsAddTrip);
     
    
    
@@ -23,11 +36,11 @@ router
 
 router 
 .route('/tip/:tripCode')
-.put(tripsController.tripsUpdateTrip);
+.put( auth, tripsController.tripsUpdateTrip);
 
 router
 .route('/tip/:tripCode')
-.delete(tripsController.tripsDeleteTrip);
+.delete(auth, tripsController.tripsDeleteTrip);
 
    
    

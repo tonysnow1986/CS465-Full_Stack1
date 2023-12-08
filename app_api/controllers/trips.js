@@ -45,7 +45,9 @@ const tripsFindByCode = async(req, res) => {
 };
 
 const tripsAddTrip = async (req, res) => {
-    Model
+    getUser(req, res,
+        (req, res) => {
+    Trip
     .create({
         code: req.body.code,
         name: req.body.name,
@@ -69,11 +71,16 @@ const tripsAddTrip = async (req, res) => {
         }
     });
 }
+);
+}
 
 
 const tripsDeleteTrip = async (req, res) => {
+    getUser(req, res,
+        (req, res) =>{
     console.log("Inside trips.js on server #tripsDeleteTrip");
-    model.findOneAndDelete({'code': req.params.tripCode})
+    Trip
+    .findOneAndDelete({'code': req.params.tripCode})
 
     .then(trip => {
         if (!trip) {
@@ -97,10 +104,14 @@ const tripsDeleteTrip = async (req, res) => {
            .json(err);
     });
 }
+    );
+}
 
 const tripsUpdateTrip = async (req, res) => {
+    getUser(req, res,
+        (req, res) =>{
     console.log(req.body);
-    model
+    Trip
          .findOneAndUpdate({'code': req.params.tripCode},{
             code: req.body.code,
             name: req.body.name,
@@ -133,8 +144,34 @@ const tripsUpdateTrip = async (req, res) => {
                .status(500)
                .json(err);
          })
+        }
+        );
 
 }
+
+const getUser = (req, res, callback) => {
+    if (req.auth && req.auth.email) {
+        User
+           .findOne({email: req.auth.email})
+           .exec((err, user) => {
+            if (!user) {
+                return res
+                   .status(404)
+                   .json({"message": "User not found"});
+            } else if (err) {
+                console.log(err);
+                return res
+                    .status(404)
+                    .json(err);
+            }
+            callback(req, res, user.name);
+           });
+    } else {
+        return res
+            .status(404)
+            .json({"message": "User not found"});
+    }
+};
 module.exports = {
     tripsAddTrip,
     tripsList,
