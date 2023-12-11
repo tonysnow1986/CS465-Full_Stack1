@@ -1,11 +1,9 @@
-
-import { trips } from './../data/trips';
 import { Inject, Injectable} from '@angular/core';
 import { User } from '../models/user';
 import { BROWSER_STORAGE } from '../storage';
 import { Authresponse } from '../models/authresponse';
 import { TripDataService } from './trip-data.service';
-import { Token } from '@angular/compiler';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +12,7 @@ import { Token } from '@angular/compiler';
 export class Authentication {
 
   constructor(
-    @Injectable(BROWSER_STORAGE)private storage: Storage,
+    @Inject(BROWSER_STORAGE)private storage: Storage,
     private tripDataService: TripDataService
     ) {}
 

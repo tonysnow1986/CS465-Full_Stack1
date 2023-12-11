@@ -1,4 +1,3 @@
-import { Authresponse } from './../models/authresponse';
 import { Authentication } from './../services/authentication';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
